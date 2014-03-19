@@ -1,0 +1,78 @@
+.photolist
+{
+cursor: url(../images/cur/big.cur),auto;
+overflow: hidden;
+}
+.article_list .article_listm  .photolist img{
+float: left;
+padding:0;
+}
+.article_list .article_listm  .photolist img:hover
+{
+filter: alpha(opacity= 80);
+-khtml-opacity: .8;
+-moz-opacity: .8;
+opacity: .8;
+background: black;
+_filter: none;
+}
+
+#imgshow {
+position: fixed;
+z-index: 2000;
+top: 0px;
+left: 0px;
+height: 100%;
+width: 100%;
+background-color: black;
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=99)";
+filter: alpha(opacity=99);
+-moz-opacity: 0.99;
+opacity: 0.99;
+text-align:center;
+color:#DDD;
+}
+#imgshow #close
+{
+z-index: 1000;
+background: url(../images/multishow_bg.png) no-repeat;
+background-position: -99px 0;
+float: right;
+width: 20px;
+height: 20px;
+cursor: pointer;
+position: absolute;
+right: 0;
+top: 0;
+}
+#imgshow #close:hover{
+background-position: 0 0;
+}
+#imgshow #prev {
+z-index: 1000;
+background: url(../images/multishow_bg.png) no-repeat;
+left:0;
+width: 60px;
+height: 60px;
+cursor: pointer;
+background-position: -20px -190px;
+position: absolute; 
+top: 40%;
+}
+#imgshow #next {
+z-index: 1000;
+background: url(../images/multishow_bg.png) no-repeat;
+width: 60px;
+height: 60px;
+cursor: pointer;
+background-position: -35px -488px;
+position: absolute; 
+top: 40%;
+right: 0;
+}
+#imgshow #prev:hover{
+background-position: -20px -778px;
+}
+#imgshow #next:hover{
+background-position: -33px -1067px;
+}

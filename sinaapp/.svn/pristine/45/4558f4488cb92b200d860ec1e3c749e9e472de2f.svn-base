@@ -1,0 +1,35 @@
+<link rel="stylesheet" type="text/css" href="css/reply.css" media="all" />
+<script>
+$(document).ready(function () {
+			a=$("#commentor{#$articleid#}");
+		 	b=$("#AddrMessage").val()+"网友";
+			a.val(b); 
+});
+</script>
+<div class="article_list_reply">
+<div class="article_list_replym">
+<div class="replybox" id="replybox">
+<form id="replyform{#$articleid#}" action="javascript:void(0);">
+<div class="textarea">
+<input type="text" name="commentor" id="commentor{#$articleid#}" id="innern" class="innern" />
+<input type="text" name="comment" id="innerm" class="innerm" />
+<input type="hidden" name="articleid"  value="{#$articleid#}" />
+</div>
+<button id="sub" onclick="javascript:commentsub('#replyform{#$articleid#}','#article{#$articleid#}','article_list_relpy.php','{#$articleid#}');">提交</button>
+</form>
+</div>
+<ul>
+{#section name=i loop=$comment  step=-1#}
+	<li id="replylist{#$smarty.section.i.index+1#}">
+	<span class="cmrn clearfix">
+{#$comment[i].name#} ({#$smarty.section.i.index+1#}楼):  
+	</span>
+	<span class="cmcontent">{#$comment[i].content#}
+	</span>
+	<a href="javascript:void(0);" onclick="replyfor($(this),'{#$smarty.section.i.index+1#}');" class="rep">回复</a>
+	</li>
+{#/section#}
+</ul>
+<div class="hide" onclick="closecm($(this).parent().parent().parent());">收起</div>
+</div>
+</div>

@@ -1,0 +1,36 @@
+<div class="catagory" style="background: url('{#$article[i].images#}') no-repeat;">
+</div>
+<div class="article_list">
+  <div class="article_listt" id="article_listt">
+  <a class="view" href="index.php?catalog=article&articleid={#$article[i].id#}&show=1" title="点击浏览全文"></a>
+  </div>
+	<div class="article_listm"  id="article_listm">
+			<div class="title" id="title"><a href="?catalog=article&articleid={#$article[i].id#}&show=1" title="{#$article[i].title#}">{#$article[i].title|truncate_utf:20:".."#}</a>
+			</div>
+			<div class="time">{#$article[i].time|date_format:"%Y-%m-%d"#} </div>
+		<div class="content">
+	  <img src="{#$article[i].cover#}"  style="width: 164px; " alt="">
+{#$article[i].content|truncate_utf:120:"..."#}</div>
+
+<div class="other">
+<div class="bq">
+<ul>
+{#assign var=arr value="|"|explode:$article[i].mark#}
+{#foreach key=key item=item from=$arr#}
+<li>{#$item#}</li>
+{#/foreach#}
+</ul>
+</div>
+<div class="opt">
+<a href="javascript:void(0);" onclick="comment('#article{#$article[i].id#}');" >评论(<b id="comment{#$article[i].id#}">{#$article[i].count#}</b>)</a>
+<a href="#">转载</a>
+<a href="javascript:void(0);">推荐</a>
+<a href="javascript:void(0);">喜欢(<b id="hot{#$article[i].id#}">{#$article[i].hot#}</b>)</a>
+<a class="like" href="javascript:favor('{#$article[i].id#}')" title="喜欢"></a>
+</div>
+</div>
+	</div>
+	<div class="comment" id="article{#$article[i].id#}">	
+	</div>
+	<div class="article_listb"></div>
+</div>

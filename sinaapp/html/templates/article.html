@@ -1,0 +1,73 @@
+<link rel="stylesheet" type="text/css" href="css/article.css" media="all" />
+<script>
+$(document).ready(function () {
+			a=$("#commentor{#$article.id#}");
+		 	b=$("#AddrMessage").val()+"网友";
+			a.val(b); 
+});
+</script>
+  		<div class="article_content clearfix">
+		<div class="middle">
+			<div class="title">{#$article.title#}</div>
+			<div class="time">{#$article.time#}</div>
+			<div class="content" style="clear:both;">
+			{#$article.content#}
+		  
+			</div>
+<div class="other">
+<div class="bq">
+<ul>
+{#assign var=arr value="|"|explode:$article.mark#}
+{#foreach key=key item=item from=$arr#}
+<li>{#$item#}</li>
+{#/foreach#}
+</ul>
+</div>
+<div class="opt">
+<a href="javascript:void(0);">喜欢(<b id="hot{#$article.id#}">{#$article.hot#}</b>)</a>
+<a href="#">转载</a>
+<a href="javascript:void(0);">推荐</a>
+<a class="like" href="javascript:favor('{#$article.id#}')" title="喜欢"></a>
+</div>
+{#if $article.src!=''#}
+<div class="src">转自：<a href="{#$article.src#}" target="_black">{#$article.src|truncate_utf:42:".."#}</a></div>
+{#/if#}
+{#if $isLogin=="true"#}
+<div class="edit"><a href="admin/?do=article_edit&id={#$article.id#}" target="_black">编辑</a></div>
+{#/if#}
+</div>
+</div>
+<div class="bottom"></div>
+</div>
+	
+	
+<div class="comment_content clearfix">
+<div class="middle">
+<div class="content">
+<div class="replybox" id="replybox">
+<form id="replyform{#$article.id#}" action="javascript:void(0);">
+<div class="inputn">
+昵称:
+</div>
+<input type="text" name="commentor" id="commentor{#$article.id#}" class="innern">
+<div class="inputn">
+内容:
+</div>
+<div class="box">
+<textarea name="comment" class="innerm"></textarea>
+</div>
+
+<input type="hidden" name="articleid" value="{#$article.id#}" />
+<button id="sub" class="clearfix" onclick="javascript:commentsub('#replyform{#$articleid#}','#areplylist','article_reply.php');">提交</button>
+</form>
+</div>
+<div style="clear:both"></div>
+<div id="areplylist">
+{#include file="article_reply.html" comment=$comment#}
+</div>
+</div>
+</div>
+</div>		
+	
+
+

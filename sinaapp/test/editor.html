@@ -1,0 +1,34 @@
+<html>
+<body>
+<center>
+<div unselectable="on" align="center" style="height:360; width:400; background-color:menu; border:outset menu">
+<br>
+<div id="foo" contenteditable align="left" style="height:250; width:350; background-color:white;font-face:Arial; padding:2; border:inset powderblue; scrollbar-base-color:powderblue; overflow-auto;">
+</div>
+<input type="button" value="粗体" unselectable="on" onclick='document.execCommand("Bold"); foo.focus();'>
+<input type="button" value="斜体" unselectable="on" onclick='document.execCommand("Italic"); foo.focus();'>
+<input type="button" value="下划线" unselectable="on" onclick='document.execCommand("Underline"); foo.focus();'>
+<input type=button value="黑体" onclick=document.execCommand('FontName',false,'黑体')>
+<input type=button value="9号字" onclick=document.execCommand('FontSize',false,9)>
+<input type=button value="红色字" onclick=document.execCommand('ForeColor',false,'#ff0000')>
+<br>
+<input type=button value="撤消" onclick=document.execCommand('Undo')>
+<input type=button value="重做" onclick=document.execCommand('Redo') id=button2 name=button2>
+<input type=button value="删除" onclick=document.execCommand('Delete')>
+<input type=button value="剪切" onclick=document.execCommand('Cut')>
+<input type=button value="拷贝" onclick=document.execCommand('Copy')>
+<input type=button value="粘贴" onclick=document.execCommand('Paste')>
+<br>
+<input type=button value="刷新" onclick=document.execCommand('refresh',false,0)>
+<input type=button value="停止" onclick=document.execCommand('stop')>
+<input type=button value="保存" onclick=document.execCommand('SaveAs')>
+<input type=button value="另存为" onclick=document.execCommand('Saveas',false,'c:\\test.htm')>
+</div>
+</center>
+<form name="form1">
+<textarea name="mytext" cols="50" rows="10"></textarea>
+<input type="button" value="取文本" onclick='form1.mytext.value=foo.innerHTML;'>
+<input type="button" value="设文本" onclick='foo.innerHTML=form1.mytext.value;'>
+</form>
+</body>
+</html>

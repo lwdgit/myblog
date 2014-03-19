@@ -1,0 +1,13 @@
+<?php
+include '../plugins/word.class.php';
+$word=new word;
+$word->start();
+$wordname="saestor://uploads/".rand()."rd323.doc";
+echo $_GET['u'];
+$word->save($wordname);//保存word并且结束.
+
+ob_flush();//每次执行前刷新缓存
+flush();
+?>
+<div align="center"><a href="<?php echo $wordname ; ?>" target=_blank class="unnamed1">试卷已生成，请点此查看</a> 
+</div>

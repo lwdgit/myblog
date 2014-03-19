@@ -1,0 +1,16 @@
+<?php
+require_once("init.php");
+require_once("admin/check2.php");
+if(!empty($_SERVER['HTTP_USER_AGENT'])){
+		if(stripos($_SERVER['HTTP_USER_AGENT'],'ie'))
+		{
+		$flashurl="widget-player.swf";
+		}
+		else 
+		$flashurl="widget-player2.swf";
+		$smarty->assign("flashurl",$flashurl);
+	}
+if(isset($_GET['debug'])|check_login($db))
+$smarty->assign("debug","on");
+$smarty->display('index.html');
+?>

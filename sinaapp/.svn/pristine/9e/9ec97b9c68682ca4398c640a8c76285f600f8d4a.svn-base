@@ -1,0 +1,58 @@
+<?php
+require '../mysql.class.php';
+include '../plugins/thumb.php';
+include 'check2.php';
+if(!check_login($db))gologin();
+
+function movfile($path)
+{
+if(defined('SAE_TMP_PATH'))return $path;
+$dest = preg_replace('/\/cache/','',$path);
+if(!rename($path,$dest))return false;
+return substr($dest, 3);
+}
+function sql_query($db,$index,$path,$ablum_id,$info='')
+{
+$sql="INSERT INTO photos(index1, path, ablumid, info,time) VALUES ('$index','$path','$ablum_id','$info',now())";
+$res=$db->query($sql);
+if($res)
+return true;
+else return false;
+}
+
+if(!empty($_POST))
+{
+$ablum_id=time();
+$db->connect();
+$id=$_POST['imglist'];
+$photos=explode("|", $id);
+$flag=true;
+date_default_timezone_set('PRC');//中国时区
+foreach($photos as $key=>&$value)
+{
+$D=date("YmdHis").rand();//时间戳
+$rep_str='thumbs/'.$D.'${2}';
+$res=explode("::", $value);
+$thumb[]= preg_replace('/([^\/]*)(\.[^.]{1,4})$/i',$rep_str,$res[0]);
+if(!create_thumb($res[0],$thumb[$key])){echo "生成缩略图失败!";$flag=false;};
+$article_cover=movfile($res[0]);
+if(!$article_cover){$flag=false;break;}
+$flag&=sql_query($db,$key,$article_cover,$ablum_id,$res[1]);
+}
+print_r(thumb);
+if($flag)
+	/*echo "插入相册成功..."*/;
+else  {echo "<script>alert('插入相册失败,过程中止');</script>";return;}
+$artitle_title=$_POST['article_title'];
+$article_content=addslashes($_POST['article_content']);
+$article_author=$_POST['article_author'];
+$article_mark=$_POST['article_mark'];
+$thumblist=join('|',$thumb);
+$sql="INSERT INTO articles (catagory, title, content, time, author,cover,mark,ablumid,other) VALUES ('2','$artitle_title','$article_content',now(),'$article_author','$article_cover','$article_mark','$ablum_id','$thumblist')"; 
+$res=$db->query($sql);
+if($res)
+echo "<script>alert('全部成功');</script>";
+else "<script>alert('失败');</script>";
+}
+else echo "data is null";
+?>

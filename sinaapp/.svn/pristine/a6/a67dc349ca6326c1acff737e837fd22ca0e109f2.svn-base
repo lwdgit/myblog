@@ -1,0 +1,84 @@
+{#config_load file='myblog.conf#}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <link rel="stylesheet" type="text/css" href="css/photo.css"  />
+ <link rel="stylesheet" href="css/animate.css" type="text/css">
+   <script src="js/jquery-1.8.min.js" type="text/javascript"></script> 
+       {#if $debug!="on"#}
+          <script src="js/right_band.js" type="text/javascript"></script> 
+       {#/if#}
+<script src="js/ajax.js" type="text/javascript">
+</script> 
+
+  <title>{##titile##}</title>
+</head>
+<body>
+  <div class="init clearfix">
+    <div class="container">
+
+      <div class="head">
+        <div class="logo"></div>
+
+        <div class="banner">
+          <div id="nav" class="nav">
+            <ul>
+              <li id="1" class="active">
+                  <a href="/">首页</a>
+              </li>
+			        <li id="2">
+                <a href="?catalog=article_list">博文</a>
+              </li>
+
+              <li id="3">
+                <a href="?catalog=photo_list">照片</a>
+              </li>
+		          <li id="4">
+                <a href="?catalog=about">关于</a>
+              </li>			  
+            </ul>
+          </div>
+
+          <div class="search">
+			  <input type='hidden' name="AddrMessage" id="AddrMessage" value="来自星星的路人甲">
+            <form action="return false;">
+              <input type="text" name="in" placeholder="请输入你想查询的内容" id="" class="i"> <input type="submit" name=
+              "se" class="s" value="">
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="main" id="blog_main">
+        <div id="left">
+		<div id="ajaxcontent">
+		 <!--  {#include file="main.html"#} -->
+		 {#php#}
+		  include("init.php");
+          include("controller.php");
+		 {#/php#}
+		 </div>
+        </div>
+
+        <div id="animate"></div>
+
+     <div class="right">
+      {#include file="sidebar.html" flashurl=$flashurl#}
+    </div> 
+      </div>
+
+      <div style="display:none" id="gotopbtn" class="to_top">
+        <a title="返回顶部" href="javascript:void(0);"></a>
+      </div>
+
+      <div class="clear"></div>
+
+      <div class="footer">
+        {#include file="footer.html"#}
+      </div>
+    </div>
+  </div>
+</body>
+</html>

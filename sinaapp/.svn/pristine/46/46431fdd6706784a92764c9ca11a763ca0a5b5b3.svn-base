@@ -1,0 +1,10 @@
+<?php
+include '../plugins/word.class.php'
+$$word=new word;
+$$word->start();
+echo '$$cout';
+$$wordname="word.doc";
+$$word->save($$wordname);//保存word并且结束.
+?>
+<div align="center"><a href="<?php echo $$wordname ; ?>" target=_blank class="unnamed1">试卷已生成，请点此查看</a> 
+</div>

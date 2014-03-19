@@ -1,0 +1,297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML lang=zh-CN xmlns="http://www.w3.org/1999/xhtml" 
+xml:lang="zh-CN">
+<HEAD>
+<META content="IE=7.0000" http-equiv="X-UA-Compatible">
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<TITLE>关于我</TITLE>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<LINK rel=stylesheet type=text/css href="reset.css">
+<LINK rel=stylesheet type=text/css href="impress.css">
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<SCRIPT id=jquery_183 class=library type=text/javascript 
+src="js/jquery-1.8.min.js"></SCRIPT>
+
+<!-- <SCRIPT> 
+   (function() {
+     if (! 
+     /*@cc_on!@*/
+     0) return;
+     var e = "abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video".split(', ');
+     var i= e.length;
+     while (i--){
+         document.createElement(e[i])
+     } 
+})() 
+</SCRIPT> -->
+
+<META name=GENERATOR content="MSHTML 8.00.6001.23067"></HEAD>
+<BODY class=impress-not-supported>
+
+<div class="bg"><img src="http://sandbox.runjs.cn/uploads/rs/86/ryeuiarn/bg04.jpg" width="100%" style="width: 1024px; height: 182px; "> 
+</div>
+
+<header id="top" class="top" style="background-color: rgba(255, 255, 255, 0.199219); ">
+<h1><a href="http://www.oschina.net/" target="_blank"><img alt="我的大学" src="files/logo.png"></a><em>2010-2013大记事</em></h1>
+<div id="bgMusicSwitch" class="music" title="播放背景音乐">
+<div class="triangle" style="display: block; ">
+</div>
+<div class="pause pause1" style="display: none; ">
+</div>
+<div class="pause pause2" style="display: none; ">
+</div>
+</div>
+</header>
+
+
+<section id="timeline" class="timeline">
+		<div id="line" class="line_white">			
+		</div>
+	<div id="impress">
+		<div id="timeList">	
+		
+			<div class="step year past active"  data-x="-600" data-y="0" data-scale ="0.5" id="0">					
+				<div class="year2010">
+					2010
+			</div>
+			<div class="list_show">
+				刚刚进入大学校园
+			</div>
+			</div>
+			<div class="timeList_item step"  data-x="0" data-y="0"  id="#1">					
+				<div class="circle">
+					09/02
+				</div>
+				<h2 class="timeList_item_title">
+						初入大学
+					</h2>
+				<div class="list_show show1" >
+					<img src="http://sandbox.runjs.cn/uploads/rs/86/ryeuiarn/event1.jpg" width="500">
+					<h2>目的地:湘潭大学</h2>
+					<p>交通工具:汽车,火车,公交车<br/>
+					天气:晴转阴  空气质量:良好
+					</p>
+				</div>
+			</div>	
+			<div class="timeList_item step refresh"  data-x="5000" data-y="0" id="#2">
+					<div class="list_show">
+						<a href='javascript:replay();'><img src="refress.png"/></a>
+						<p class="end">2013，我会更加努力！</p>
+				</div>				
+			</div>
+        </div>
+</div>
+</section>
+
+
+	<div class="gotop">
+					<a href="#top"><img src="http://sandbox.runjs.cn/uploads/rs/86/ryeuiarn/top.png" title="回顶部"/></a>	
+	</div>
+<!--[if !IE]><!-->
+<script type="text/javascript" src="impress.js"></script>
+<!--<![endif]-->
+
+
+<SCRIPT>var impress = $.browser.msie?undefined:impress();
+
+//预加载图片
+new Image().src = "http://sandbox.runjs.cn/uploads/rs/86/ryeuiarn/bg04.jpg";
+new Image().src = "http://sandbox.runjs.cn/uploads/rs/86/ryeuiarn/bg01.jpg";
+new Image().src = "http://sandbox.runjs.cn/uploads/rs/86/ryeuiarn/bg02.jpg";
+new Image().src = "http://sandbox.runjs.cn/uploads/rs/86/ryeuiarn/bg03.jpg";
+
+var replay = function(){
+	if(impress){
+		impress.goto($("#0")[0]);
+	}else{
+		location.reload();
+	}
+};
+
+
+var event_cache = null;
+
+var loop = true,timing=null;
+
+$(function(){			
+	
+	 $(window).bind('scroll resize',function(){
+        if($(window).scrollTop() >= 1)
+            $('.gotop').css('display','block');
+        else
+            $('.gotop').css('display','none');
+    });   
+	
+	var cache_event_top = function(){
+		if(event_cache!=null)
+			return;
+		event_cache = new Array(24);
+		var i = 0;
+		var length = event_cache.length;
+		for(;i<length;i++){
+			var id = i+1;
+			event_cache[i] = $("#"+id).position().top;
+		}
+	}
+		
+	var resize = function(){
+		
+		var width = $(window).width();
+		var height = $(window).height();
+		$(".bg img").css("width",width);
+		$(".bg img").css("height",height);
+		
+	};
+		
+	var cur_month = 9
+
+	var getMonthByTop = function(top){
+		for(var i=0,event=event_cache[i];i<event_cache.length;i++){
+				if(i==event_cache.length-1 && top>=event || top>=event && top<event_cache[i+1]){
+					var date = $("#"+(i+1)).find(".circle").html();
+					if(date){
+						var month = +date.split("/")[0];
+						return month;
+					}
+				}
+		}
+		return cur_month;
+	};
+		
+	var scroll = function(){
+		if($.browser.msie){
+			cache_event_top();
+			var st = $(window).scrollTop();
+			var month = getMonthByTop(st);
+			if(month!=cur_month){
+				changeBackground(month);
+				cur_month = month;
+			}
+		}
+	};
+	
+	resize();
+	
+	$(window).resize(function(){
+		resize();
+	});
+	
+	$(window).scroll(function(){
+		scroll();
+	});
+	
+	$(".circle").click(function(){
+			loop = false;
+		if(timing)
+			clearInterval(timing);
+	});
+	$(".refresh img").click(function(){
+		loop = true;
+		$(".refresh img").addClass("rotate45");
+		setTimeout(function(){
+			$(".refresh img").removeClass("rotate45");
+		},2000);	
+	});
+	if(!$.browser.msie){
+		if($.browser.safari)
+			bgMusic = new Audio('http://runjs.cn/music/music.mp3');
+		else
+			bgMusic = new Audio('http://runjs.cn/music/music.ogg');
+		bgMusic.loop = true;
+		bgMusic.volume = 0.7;
+		$('#bgMusicSwitch').click(function(){
+			if(bgMusic.paused){
+				bgMusic.play();
+				$(".triangle").css("display","none");
+				$(".pause").css("display","block");
+				$("#bgMusicSwitch").attr("title","暂停背景音乐");
+			}else{
+				bgMusic.pause();
+				$(".pause").css("display","none");
+				$(".triangle").css("display","block");
+				$("#bgMusicSwitch").attr("title","播放背景音乐");
+			}});
+		var bgSwitch = function(){
+			$('#bgMusicSwitch').trigger('click');
+		}
+				
+		bgSwitch();
+	}else{
+		$(".music").hide();
+	}		
+	
+});
+
+
+if(impress)impress.init();
+
+var last_month = 4;
+/*
+var changeBackground = function(month){
+	var body = $("body");
+	var url = "";
+	if(month == 12 || month == 1 || month==2){
+		if(last_month==4)
+			return;
+		last_month = 4;
+		url = "http://sandbox.runjs.cn/uploads/rs/86/ryeuiarn/bg04.jpg";
+		$("header").css("background-color","rgba(255,255,255,0.2)");
+		$(".impress-supported .list_show h2").css("color","#0087f1");
+		$(".impress-not-supported .timeList_item_title").css("color","#0087f1");
+	}else if(month>=3 && month<=5){
+		if(last_month==1)
+			return;
+		last_month = 1;
+		url = "http://sandbox.runjs.cn/uploads/rs/86/ryeuiarn/bg01.jpg";
+		$("header").css("background-color","rgba(255,255,255,0.2)");
+		$(".impress-supported .list_show h2").css("color","#fff");
+		$(".impress-not-supported .timeList_item_title").css("color","#eca200");
+	}else if(month>=6 && month<=8){
+		if(last_month==2)
+			return;
+		last_month = 2;
+		url = "http://sandbox.runjs.cn/uploads/rs/86/ryeuiarn/bg02.jpg";
+		$("header").css("background-color","rgba(0,0,0,0.2)");
+		$(".impress-supported .list_show h2").css("color","#82e211");
+		$(".impress-not-supported .timeList_item_title").css("color","#82e211");
+	}else{
+		if(last_month==3)
+			return;
+		last_month = 3;
+		url = "http://sandbox.runjs.cn/uploads/rs/86/ryeuiarn/bg03.jpg";
+		$("header").css("background-color","rgba(255,255,255,0.2)");
+		$(".impress-supported .list_show h2").css("color","#ffca00");
+		$(".impress-not-supported .timeList_item_title").css("color","#ffca00");
+	}
+	$(".bg img").attr("src",url);
+};
+*/
+
+
+/*
+if(!$.browser.msie){
+	document.addEventListener('impress:stepenter', function(e){
+		var cur = arguments[0].target;
+		var date = $(cur).find(".circle").html();
+		if(date){
+			var month = +date.split("/")[0];
+			changeBackground(month);
+		}
+		if(!loop)
+			return;
+		if (typeof timing !== 'undefined') clearInterval(timing);
+		var duration = 4000;
+		timing = setInterval(function(){
+			var dom = impress.next();
+			var id = +$(dom).attr("id");
+			if(id==2){
+				clearInterval(timing);
+				loop = false;
+			}
+		}, duration);
+	});
+}
+*/
+
+</SCRIPT>
+</BODY></HTML>

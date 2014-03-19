@@ -1,0 +1,236 @@
+input,textarea{
+font-family:'Microsoft YaHei', 微软雅黑, 'Microsoft JhengHei', arial, SimSun, helvetica, sans-serif;
+}
+
+.article_content,.comment_content{
+width:700px;
+overflow:hidden;
+}
+
+.article_content .head,.comment_content .head{
+width: 80px;
+height: 50px;
+background: url('../images/postdate.png') no-repeat;
+float: left;
+position: relative;
+top: 30px;
+line-height: 12px;
+text-align: center;
+font-weight: bold;
+color: #FFF;
+}
+
+.article_content .middle,.comment_content .middle
+{
+position: relative;
+float: left;
+width: 690px;
+background: white;
+border: 2px outset #FFF;
+border-radius: 8px;
+margin: 0 auto;
+overflow: hidden;
+}
+
+.article_content img,.article_content table
+{
+	max-width: 620px !important;
+	//width: 620px !important;
+}
+
+.article_content .middle .title{
+font-size: 18px;
+padding: 18px 0 0 34px;
+width: 67%;
+float: left;
+font-weight: bolder;    
+}
+.article_content .middle .time{
+color: #D1A;
+font-size: 12px;
+font-family: Georgia,Tahoma,Helvetica,arial;
+
+width: 25%;
+float: left;
+padding: 25px 0 0 0;
+}
+
+.article_content .middle .content{
+    width: 90%;
+    padding: 10px 0px 10px 34px;
+    float: left;
+    font-size: 12px;
+    line-height: 25px;
+	overflow: hidden;
+}
+
+pre{
+line-height: 1.5;
+margin-bottom: 1.625em;
+overflow: auto;
+padding: 0.75em 1.625em;
+background-color: #EEE;
+border: 1px solid #DDD;
+border-radius: 3px 3px 3px 3px;
+color: #444;
+//overflow-x:scroll;
+white-space:pre-wrap; /* css3.0 */
+white-space:-moz-pre-wrap; /* Firefox */
+white-space:-pre-wrap; /* Opera 4-6 */
+white-space:-o-pre-wrap; /* Opera 7 */
+word-wrap:break-word; /* Internet Explorer 5.5+ */
+}
+.article_content .middle .content ul,li{list-style-type:disc;margin:auto;padding:auto;list-style-position:inside;}
+.article_content .middle .content .ol,li{list-style-type:decimal;margin:auto;padding:auto;list-style-position:inside;}
+.article_content .middle .content  a
+{
+text-decoration: underline;
+}
+.article_content .middle .other{
+width: 95%;
+margin: 4px 0 0 16px;
+border-top: 1px darkBlue dashed;
+float: left;
+line-height: 19px;
+color: #AAA;
+font-size: 12px;
+padding: 10px 0 10px 0px;
+}
+.article_content .middle .other .bq
+{
+float: left;
+height: 19px;
+width: 49%;
+overflow: hidden;
+background: url(../images/icon24.png?030) no-repeat -240px -111px;
+}
+
+.other .bq ul {
+padding-left: 15px;
+overflow: hidden;
+}
+.other ul li {
+list-style: none;
+float: left;
+padding-left: 15px;
+}
+.other .opt
+{
+height:20px;
+float: right;
+}
+.other .opt a {
+text-decoration: none;
+padding-left: 14px;
+color: #AAA;
+float: left;
+}
+.other .src
+{
+float:left;
+height:20px;
+width:100%;	
+padding-left: 30px;
+}
+.other .src a {
+text-decoration: none;
+padding-left: 14px;
+color: #AAA;
+
+}
+
+.other .opt .like {
+background: url(../images/icon25.png?030) no-repeat 0 -2793px;
+display: block;
+width: 1px;
+height: 16px;
+float: left;
+margin: 3px 15px;
+}
+
+.article_content .bottom{
+
+}
+
+.comment_content .content{
+padding:16px;
+}
+.replybox .innern {
+float: left;
+width: 100%;
+overflow: hidden;
+border-bottom: #CDCDCD 1px solid;
+border-left: #9A9A9A 1px solid;
+border-top: #9A9A9A 1px solid;
+border-right: #CDCDCD 1px solid;
+padding-left: 3px;
+font-size: 20px;
+
+margin-top: 4px;
+height: 29px;
+line-height: 25px;
+}
+.replybox .box
+{
+border-bottom: #CDCDCD 1px solid;
+border-left: #9A9A9A 1px solid;
+border-top: #9A9A9A 1px solid;
+border-right: #CDCDCD 1px solid;
+float: left;
+width: 661px;
+margin-top: 10px;
+}
+.replybox .innerm{
+border: none;
+line-height: 24px;
+display: block;
+padding-top: 0px;
+padding-left: 5px;
+width: 98.7%;
+outline: 0;
+height:100px;
+overflow-y:hidden;
+}
+.replybox button {
+float: right;
+width: 105px;
+height: 40px;
+background: url(../images/btn24.png?041) no-repeat;
+color: white;
+text-shadow: -1px -1px 0 #779E00;
+margin: 8px 0 8px 0;
+border: 0;
+font-size: 16px;
+margin: 8px 0 8px 0;
+}
+.replybox button:hover {
+background-position: -114px 0;
+}
+.article_reply
+{
+
+}
+.article_reply li {
+list-style: none;
+border-top: 1px solid #E7E7E7;
+padding: 10px 3px;
+font-size: 12px;
+overflow: hidden;
+}
+.article_reply .cmrn {
+color: #7594B3;
+float: left;
+width: 100%;
+}
+.article_reply .cmcontent {
+float: left;
+width: 92%;
+word-break: break-all;
+white-space: normal;
+padding: 0 6px 0 6px;
+}
+.article_reply .rep {
+float: left;
+width: 6%;
+color: #7594B3;
+}

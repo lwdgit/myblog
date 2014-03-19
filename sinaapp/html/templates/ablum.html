@@ -1,0 +1,51 @@
+<link rel="stylesheet" type="text/css" href="css/photo.css" media="all" />
+<script type="text/javascript">
+var imgid={#$curpage#};
+var imgmax={#$maxpage#};
+$("#imgshow #close").click(function()
+{
+$('#imgshow').css('display','none');
+})
+
+$("#imgshow #next").click(function()
+{
+if(imgid>imgmax-2)return;
+imgid+=1;
+$('#imgshow #prev').css('display','');
+$('#smallimg'+(parseInt(imgid)-1).toString()).css('display','none');
+$('#smallimg'+imgid).css('display','');
+$('#curpage').text((imgid+1)+'/'+imgmax);
+});
+
+
+$("#imgshow #prev").click(function()
+{
+if(imgid<1)return;
+imgid-=1;
+$('#smallimg'+(parseInt(imgid)+1).toString()).css('display','none');
+$('#smallimg'+imgid).css('display','');
+$('#curpage').text((imgid+1)+'/'+imgmax);
+
+});
+
+
+</script>
+<div id="imgshow" >
+    <div class="head"><b><< {#$title#}>> </b> <span id="curpage">{#$curpage+1#}/{#$maxpage#}</span></div>
+<div id="close"></div>
+<div id="prev" style="display:"></div>
+<div id="next"></div>
+
+<div class="main">
+{#section name=i loop=$ablum#}
+  {#if $smarty.section.i.index ==$curpage#} 
+<div id="smallimg{#$smarty.section.i.index#}" style="display:">
+{#else#}
+<div id="smallimg{#$smarty.section.i.index#}" style="display:none">
+{#/if#}
+<img height="520"  src="{#$ablum[i].path#}" alt="" title="" >
+<div id="desc">{#$ablum[i].info#}</div>
+</div>
+{#/section#}
+    </div>
+</div>

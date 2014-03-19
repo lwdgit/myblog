@@ -1,0 +1,9 @@
+<?php
+ require_once("init.php");
+if(!empty($_GET))
+{
+ $smarty->assign("curpage",$_GET['curpage']);
+ $smarty->assign("ablumid",$_GET['ablumid']);
+ }
+$smarty->display('photo.html'); 
+?>

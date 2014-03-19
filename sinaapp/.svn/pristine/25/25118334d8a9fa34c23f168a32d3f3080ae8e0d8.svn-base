@@ -1,0 +1,19 @@
+<?php
+require_once("init.php");
+if(!empty($_GET))
+{
+$ablumid=$_GET['ablumid'];
+//$title=$_GET['title'];
+ $db->connect();
+$sql="select * from photos where  ablumid='$ablumid' order by index1 asc";
+$query=$db->query($sql);
+  while($row=mysql_fetch_array($query)){
+  $ablum[]=$row;
+}
+ $smarty->assign("title",$_GET['title']);
+ $smarty->assign("maxpage",count($ablum));
+ $smarty->assign("curpage",$_GET['curpage']);
+  $smarty->assign("ablum",$ablum);
+ }
+$smarty->display('ablum.html');
+?>

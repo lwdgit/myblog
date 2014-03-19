@@ -1,0 +1,61 @@
+
+(function ($R) {
+
+	window.addEventListener("message", function(e){
+		if(e.data=="close")
+		{
+			document.getElementById('readable_app_div').outerHTML='';
+			document.getElementById('readable_app_iframe').outerHTML='';document.getElementById('readable_app_cover').outerHTML='';document.getElementById('readableCSS2').outerHTML='';window.$readable=null;
+		}
+
+	}, false);
+
+	$R.compileTime = '1304957970';
+
+	//$R.path = 'http://readable-static.tastefulwords.com/';
+	$R.linksPath = 'http://wenblog.sinaapp.com/';
+	$R.path = 'http://wenblog.sinaapp.com/plugins/jianbao/';
+	$R.debug=false;
+
+	'*\');">close</button>';
+	_divElement.innerHTML=_divHtml;
+
+	var 
+		_cssElement = document.createElement('style'),
+		_cssText = ''
+		+	'#readable_app_iframe, #readable_app_cover { '
+		+		'margin: 0; padding: 0; border: none; '
+		+		'position: absolute; '
+		+		'width: 100%; height: 100%; '
+		+		'top: -100%; left: 0; '
+		+		'z-index: 999999999 !important; '
+		+	'} '
+		+	'#readable_app_cover { ' 
+		+		'z-index: 999999998 !important; '
+		+		'margin: 0; padding: 0; border: 0; '
+		+	'}'
+		+	'#readable_app_div{'
+		+	'z-index: 9999999999 !important;'
+		+		'position: absolute;'
+		+		'top: '+window.scrollY+'px;'
+		+	'} '
+	;
+
+	_cssElement.setAttribute('id', 'readableCSS1');
+	_cssElement.setAttribute('type', 'text/css');
+	if (_cssElement.styleSheet) { _cssElement.styleSheet.cssText = _cssText; }
+		else { _cssElement.appendChild(document.createTextNode(_cssText)); }
+
+	var _body = document.getElementsByTagName('body')[0];
+		_body.appendChild(_cssElement);
+		_body.appendChild(_divElement);
+		_body.appendChild(_iframeElement);
+
+
+	var _iframe = document.getElementById('readable_app_iframe'),
+		_doc = (_iframe.contentDocument || _iframe.contentWindow.document);
+		_doc.open();
+		_doc.write(_iframeHTML);
+		_doc.close();
+
+})(window.$readable);

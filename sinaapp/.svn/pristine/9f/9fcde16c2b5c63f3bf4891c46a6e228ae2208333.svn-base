@@ -1,0 +1,7 @@
+<?php
+include 'MhtFileMaker.class.php';
+$fileContent = getWordDocument($content,"http://www.yoursite.com/Music/etc/");
+$fp = fopen("test.doc", 'w');
+fwrite($fp, $fileContent);
+fclose($fp);
+?>

@@ -1,0 +1,63 @@
+<div class="catagory" style="background: url('{#$article[i].images#}') no-repeat;">
+</div>
+<div class="article_list">
+  <div class="article_listt">
+ <a class="view" href="javascript:void(0);" ></a>
+  </div>
+<div class="article_listm">
+			<div id="title" class="title"   >{#$article[i].title|truncate_utf:20:".."#}
+			</div>
+			<div id="photolistid" style="display:none">{#$article[i].ablumid#}</div>
+			<div class="time">{#$article[i].time|date_format:"%Y-%m-%d"#} </div>
+		<div class="content">
+<div id="smallimglist" class="photolist" style="display: block; ">
+{#assign var=arr value="|"|explode:$article[i].other#}
+{#foreach key=key item=item from=$arr name=foo#}
+  {#if $smarty.foreach.foo.index<6#} 
+<img id="{#$smarty.foreach.foo.index#}" width="80" height="80" src="{#$item#}" >
+{#else#}
+{#php#}echo "<div style='width: 10px;'>...</div>";{#/php#}
+  {#/if#}
+{#/foreach#}
+
+
+</div>
+<div class="desc">
+{#$article[i].content|truncate_utf:120:"..."#}
+</div>
+</div>
+
+<div class="other">
+<div class="bq">
+<ul>
+{#assign var=arr value="|"|explode:$article[i].mark#}
+{#foreach key=key item=item from=$arr#}
+<li>{#$item#}</li>
+{#/foreach#}
+</ul>
+</div>
+<div class="opt">
+<a href="javascript:void(0);" onclick="comment('#article{#$article[i].id#}');" >评论(<b id="comment{#$article[i].id#}">{#$article[i].count#}</b>)</a>
+<a href="#">转载</a>
+<a href="javascript:void(0);">推荐</a>
+<a href="javascript:void(0);">喜欢(<b id="hot{#$article[i].id#}">{#$article[i].hot#}</b>)</a>
+<a class="like" href="javascript:favor('{#$article[i].id#}')" title="喜欢"></a>
+</div>
+</div>
+	</div>
+	<div class="comment" id="article{#$article[i].id#}">	
+	</div>
+	<div class="article_listb"></div>
+</div>
+<script type="text/javascript">
+ $("#smallimglist img").click(function()
+{
+data=$(this).parent().parent().parent();
+$.get('ablum.php',{curpage:$(this).attr('id'),ablumid:data.find('#photolistid').text(),
+title:data.find('#title').text()
+},function (resultData){
+$('#ablum').html(resultData);
+},'text');
+});
+
+</script>

@@ -1,0 +1,20 @@
+
+<div class="menu">
+{#section name=i loop=$article#}
+{#include file="photo_list_c.html"#}
+{#/section#}
+</div>
+<div id="ablum"></div>
+<div class="nav_bar" id="nav_bar">
+<ul class="pagination">	
+<li><a href="javascript:return false;">当前是：第{#$cur_page#}页 共{#$total_page#}页</a></li>
+{#if $cur_page>1#}
+<li><a href="?catalog=photo_list&page=1" title="照片 首页"><<</a></li> 
+<li><a href="?catalog=photo_list&page={#$cur_page-1#}" title="照片 上一页"><</a></li>   
+{#/if#}
+{#if $cur_page<$total_page#}
+<li><a href="?catalog=photo_list&page={#$cur_page+1#}" title="照片 下一页">></a></li> 
+<li><a href="?catalog=photo_list&page={#$total_page#}" title="照片 尾页">>></a></li>
+{#/if#}
+</ul>
+</div>

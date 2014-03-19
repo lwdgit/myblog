@@ -1,0 +1,5 @@
+name: wenblog
+version: 2
+handle:
+
+- errordoc: 404 /404.html
